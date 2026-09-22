@@ -14,10 +14,12 @@ public final class ModRecipeSerializers {
     public static final DeferredRegister<RecipeSerializer<?>> RECIPE_SERIALIZERS =
             DeferredRegister.create(ForgeRegistries.RECIPE_SERIALIZERS, CreateTransitTickets.MOD_ID);
 
-    public static final RegistryObject<RecipeSerializer<?>> TICKET_DEPLOYING = RECIPE_SERIALIZERS.register(
-            "ticket_deploying", () -> new ProcessingRecipeSerializer<>(TicketDeployingRecipe::new));
-    public static final RegistryObject<RecipeSerializer<?>> TICKET_PRESSING = RECIPE_SERIALIZERS.register(
-            "ticket_pressing", () -> new ProcessingRecipeSerializer<>(TicketPressingRecipe::new));
+    public static final RegistryObject<RecipeSerializer<?>> TICKET_DEPLOYING =
+            RECIPE_SERIALIZERS.register("ticket_deploying",
+                    () -> new ProcessingRecipeSerializer<>(TicketDeployingRecipe::new));
+    public static final RegistryObject<RecipeSerializer<?>> TICKET_PRESSING =
+            RECIPE_SERIALIZERS.register("ticket_pressing",
+                    () -> new ProcessingRecipeSerializer<>(TicketPressingRecipe::new));
 
     private ModRecipeSerializers() {
     }

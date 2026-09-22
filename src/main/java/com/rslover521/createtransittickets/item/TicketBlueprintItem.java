@@ -30,7 +30,6 @@ public final class TicketBlueprintItem extends Item {
             DistExecutor.unsafeRunWhenOn(Dist.CLIENT,
                     () -> () -> com.rslover521.createtransittickets.client.ClientHooks.openBlueprintScreen(hand));
         }
-
         return InteractionResultHolder.sidedSuccess(blueprint, level.isClientSide);
     }
 

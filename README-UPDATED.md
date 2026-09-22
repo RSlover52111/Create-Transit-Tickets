@@ -24,7 +24,7 @@ Ticket blueprints are configured through an in-game menu—commands are no longe
 
 Tickets can use the **Local**, **Semi-Fast**, or **Express** service. Operators can configure each gate to accept any service or require one specific service.
 
-The Blank Ticket, Ticket Blueprint, Transit Ticket, and Ticket Gate use Create-style tooltips. Hold Shift while hovering to see their summaries and usage instructions. Incomplete Transit Tickets display their recipe progress and next required machine directly in the tooltip.
+The Blank Ticket, Ticket Blueprint, Transit Ticket, and Ticket Gate use Create-style tooltips. Hold Shift while hovering to see their summaries and usage instructions. The Incomplete Transit Ticket is currently a simple intermediate item.
 
 ---
 
@@ -41,8 +41,7 @@ The current `0.1.3-beta` release includes:
 - 🚶 Gates that close after a player passes through or after a hard five-second timeout.
 - 🛡️ Server-validated configuration packets for blueprints and gates.
 - 📖 Create-style Shift summaries for the Blank Ticket, Ticket Blueprint, Transit Ticket, and Ticket Gate.
-- ⚙️ Two-stage ticket production using a Deployer followed by a Mechanical Press.
-- 🟨 An Incomplete Transit Ticket that preserves blueprint data and shows recipe progress `1/2`.
+- ⚙️ Ticket production using a Deployer followed by a Mechanical Press.
 
 ---
 
@@ -55,15 +54,15 @@ The current `0.1.3-beta` release includes:
 1. Craft a **Blank Ticket** and a **Ticket Blueprint**.
 2. Hold the Ticket Blueprint and right-click to open its configuration menu.
 3. Choose the ticket name, type, service, and any required duration or passage count, then select **Done**.
-4. Put the configured Ticket Blueprint into the hand of a powered **Deployer** positioned over a belt, depot, or other valid processing surface.
-5. Send a Blank Ticket underneath the Deployer. The Deployer applies the blueprint and produces an **Incomplete Transit Ticket** without consuming the reusable blueprint.
+4. Place the configured Ticket Blueprint into the hand of a **Deployer**. The Deployer must be powered and positioned over a belt, depot, or other valid processing surface.
+5. Send a Blank Ticket underneath the Deployer. It deploys the blueprint onto the blank and produces an **Incomplete Transit Ticket**. The blueprint remains in the Deployer and can be reused.
 6. Send the Incomplete Transit Ticket beneath a powered **Mechanical Press**.
 7. The press produces an issued **Transit Ticket** containing the blueprint's configured name, type, service, and validity data.
 8. Hold the finished ticket and use it on a compatible **Ticket Gate**.
 
-The Transit Ticket becomes valid when the Mechanical Press finishes. A Limited Time ticket's validity period begins at that moment—not when the blueprint is deployed. Removing the intermediate item before pressing leaves it incomplete and unable to open a Ticket Gate.
+The ticket becomes valid when the Mechanical Press finishes. For Limited Time tickets, the validity period begins at that moment. Removing an Incomplete Transit Ticket before pressing it does not issue or activate it.
 
-> Incomplete Transit Tickets created before blueprint-data transfer was added do not contain the required settings. Deploy a new Blank Ticket after updating if an older intermediate produces an invalid ticket.
+> Incomplete Transit Tickets made by older builds before NBT transfer was added do not contain blueprint settings. Deploy a new Blank Ticket after updating if an existing intermediate produces an invalid ticket.
 
 ### 📄 Blank Ticket
 
@@ -87,12 +86,10 @@ The Transit Ticket becomes valid when the Mechanical Press finishes. A Limited T
 ### 🟨 Incomplete Transit Ticket
 
 - Produced when a Deployer applies a configured Ticket Blueprint to a Blank Ticket.
-- Stores a copy of the blueprint's NBT settings while moving between machines.
+- Stores a copy of the blueprint settings while moving between machines.
 - Is not issued and cannot open a Ticket Gate.
-- Displays a half-filled progress bar representing step `1/2`.
-- Shows **Recipe Sequence**, **Progress: 1/2**, and **Next: Process in Press** in its tooltip.
 - Must be processed by a Mechanical Press to become a valid Transit Ticket.
-- Uses a damaged, Create-styled version of the completed ticket texture.
+- Currently uses the Blank Ticket texture as a temporary model.
 
 ### 🎟️ Transit Ticket
 
@@ -166,7 +163,6 @@ Examples:
 ## 🔮 Planned Features
 
 - Add ponders (somehow)
-- Neoforge 1.21.1 port
 - Optional compatibility with other Create transit and security add-ons
 
 Planned features may change as development continues.
@@ -238,13 +234,12 @@ To launch the Forge development client:
 
 ## ✅ Supported Mod Versions
 
-| Version              | Minecraft | Forge  | Create  | Supported |
-|----------------------|-----------|--------|---------|:---------:|
-| 0.1.4-beta (current) | 1.20.1    | 47.x   | 6.0.8   |    Yes    | 
-| 0.1.3-beta           | 1.20.1    | 47.x   | 6.0.8   |    Yes    |
-| 0.1.2-beta           | 1.20.1    | 47.x   | 0.5.1.f |  Legacy   |
-| 0.1.1-beta           | 1.20.1    | 47.x   | 0.5.1.f |  Legacy   |
-| 0.1.0-beta           | 1.20.1    | 47.x   | 0.5.1.f |  Legacy   |
+| Version               | Minecraft | Forge | Create  | Supported |
+|-----------------------|-----------|-------|---------|:---------:|
+| 0.1.3-beta (current)  | 1.20.1    | 47.x  | 6.0.8   |    Yes    |
+| 0.1.2-beta            | 1.20.1    | 47.x  | 0.5.1.f |  Legacy   |
+| 0.1.1-beta            | 1.20.1    | 47.x  | 0.5.1.f |  Legacy   |
+| 0.1.0-beta            | 1.20.1    | 47.x  | 0.5.1.f |  Legacy   |
 
 > This project is currently in beta, so features and saved item data may change between releases. Please confirm that you are using a supported version before opening an issue.
 
