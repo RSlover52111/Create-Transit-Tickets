@@ -5,14 +5,14 @@ import com.rslover521.createtransittickets.recipe.TicketDeployingRecipe;
 import com.rslover521.createtransittickets.recipe.TicketPressingRecipe;
 import com.simibubi.create.content.processing.recipe.ProcessingRecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeSerializer;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.registries.DeferredRegister;
+import net.neoforged.neoforge.registries.NeoForgeRegistries;
+import net.neoforged.neoforge.registries.RegistryObject;
 
 public final class ModRecipeSerializers {
     public static final DeferredRegister<RecipeSerializer<?>> RECIPE_SERIALIZERS =
-            DeferredRegister.create(ForgeRegistries.RECIPE_SERIALIZERS, CreateTransitTickets.MOD_ID);
+            DeferredRegister.create(NeoForgeRegistries.RECIPE_SERIALIZERS, CreateTransitTickets.MOD_ID);
 
     public static final RegistryObject<RecipeSerializer<?>> TICKET_DEPLOYING =
             RECIPE_SERIALIZERS.register("ticket_deploying",

@@ -14,7 +14,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.neoforged.neoforge.registries.NeoForgeRegistries;
 
 public final class TicketGatePonderScenes {
     private static final BlockPos GATE_POS = new BlockPos(2, 1, 2);
@@ -99,7 +99,7 @@ public final class TicketGatePonderScenes {
 
         Vec3 gateTop = util.vector().topOf(GATE_POS);
         Vec3 gateFront = util.vector().blockSurface(GATE_POS, Direction.NORTH);
-        ItemStack wrench = new ItemStack(ForgeRegistries.ITEMS.getValue(
+        ItemStack wrench = new ItemStack(NeoForgeRegistries.ITEMS.getValue(
                 ResourceLocation.fromNamespaceAndPath("create", "wrench")));
 
         scene.overlay().showControls(gateFront, Pointing.DOWN, 70)
